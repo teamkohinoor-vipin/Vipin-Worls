@@ -18,14 +18,22 @@
       overflow: hidden;
     }
 
-    video {
+    .animated-bg {
       position: fixed;
       top: 0;
       left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff, #9b59b6, #fd79a8);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
       z-index: -2;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .overlay {
@@ -45,6 +53,7 @@
       padding: 60px 20px;
       height: 100%;
       overflow-y: auto;
+      position: relative;
     }
 
     .card {
@@ -57,6 +66,8 @@
       max-width: 800px;
       width: 100%;
       animation: fadeIn 1.5s ease forwards;
+      position: relative;
+      z-index: 2;
     }
 
     @keyframes fadeIn {
@@ -72,6 +83,8 @@
       border: 3px solid #fff;
       margin-bottom: 20px;
       animation: float 3s ease-in-out infinite;
+      position: relative;
+      z-index: 3;
     }
 
     @keyframes float {
@@ -87,12 +100,45 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: gradient 3s ease infinite;
+      position: relative;
+      z-index: 3;
     }
 
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Bubbles - Pure page par idhar-udhar */
+    .bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .bubble {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      animation: bubbleFloat 12s linear infinite;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes bubbleFloat {
+      0% {
+        transform: translateY(100vh) translateX(var(--start-x)) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100px) translateX(var(--end-x)) scale(var(--scale));
+        opacity: 0;
+      }
     }
 
     /* Animated Stickers */
@@ -102,6 +148,8 @@
       gap: 20px;
       margin: 20px 0;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 3;
     }
 
     .sticker {
@@ -135,6 +183,8 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.3);
       animation: glow 2s ease-in-out infinite alternate;
+      position: relative;
+      z-index: 3;
     }
 
     @keyframes glow {
@@ -181,6 +231,8 @@
       text-align: left;
       margin-top: 25px;
       animation: fadeInUp 1s ease forwards;
+      position: relative;
+      z-index: 3;
     }
 
     @keyframes fadeInUp {
@@ -250,6 +302,7 @@
       animation: pulse 2s infinite;
       position: relative;
       overflow: hidden;
+      z-index: 3;
     }
 
     .telegram-btn::before {
@@ -284,6 +337,8 @@
       color: #ccc;
       text-align: center;
       animation: fadeIn 2s ease;
+      position: relative;
+      z-index: 3;
     }
 
     /* Floating particles */
@@ -316,20 +371,21 @@
 </head>
 <body>
 
-  <!-- Background Video -->
-  <video autoplay muted loop>
-    <source src="bg.mp4" type="video/mp4" />
-    Your browser does not support HTML5 video.
-  </video>
+  <!-- Animated Gradient Background with 6 Colors -->
+  <div class="animated-bg"></div>
   <div class="overlay"></div>
 
   <!-- Floating Particles -->
   <div class="particles" id="particles"></div>
 
+  <!-- Bubbles - Pure page par idhar-udhar -->
+  <div class="bubbles" id="bubbles"></div>
+
   <!-- Content -->
   <div class="container">
     <div class="card">
-      <img src="file.png" alt="VIPIN" class="profile-pic" />
+      <!-- Your Hosted DP -->
+      <img src="https://envs.sh/KLH.jpg" alt="VIPIN" class="profile-pic" />
       <h1>VIPIN</h1>
       
       <!-- Animated Stickers -->
@@ -393,9 +449,45 @@
         particlesContainer.appendChild(particle);
       }
     }
+
+    // Create bubbles - pure page par idhar-udhar
+    function createBubbles() {
+      const bubblesContainer = document.getElementById('bubbles');
+      const bubbleCount = 25;
+      
+      for (let i = 0; i < bubbleCount; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        
+        // Random size between 15px to 50px
+        const size = Math.random() * 35 + 15;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        
+        // Random start position (bottom se)
+        const startX = Math.random() * 100;
+        bubble.style.setProperty('--start-x', startX + 'vw');
+        
+        // Random end position (thoda left-right move karega)
+        const endX = (Math.random() * 100 - 50) + startX;
+        bubble.style.setProperty('--end-x', endX + 'px');
+        
+        // Random animation delay
+        bubble.style.animationDelay = Math.random() * 8 + 's';
+        
+        // Random scale
+        bubble.style.setProperty('--scale', Math.random() * 0.8 + 0.5);
+        
+        // Random animation duration
+        bubble.style.animationDuration = (8 + Math.random() * 10) + 's';
+        
+        bubblesContainer.appendChild(bubble);
+      }
+    }
     
     createParticles();
+    createBubbles();
   </script>
 
 </body>
-</html>
+  </html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VIPIN - WORLD'S</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 60px 20px;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 3s ease infinite;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Animated Stickers */
+    .sticker-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .sticker {
+      font-size: 3em;
+      animation: bounce 2s infinite, rotate 4s linear infinite;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+
+    .sticker-1 { animation-delay: 0s; }
+    .sticker-2 { animation-delay: 0.5s; }
+    .sticker-3 { animation-delay: 1s; }
+    .sticker-4 { animation-delay: 1.5s; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.1); }
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Box Styling */
+    .box {
+      border: 2px solid #667eea;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 20px 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
+      to { box-shadow: 0 0 30px rgba(102, 126, 234, 0.8), 0 0 40px rgba(102, 126, 234, 0.6); }
+    }
+
+    .box ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    .box ul li {
+      padding: 12px 0;
+      font-size: 1.2em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      animation: slideIn 0.5s ease forwards;
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .box ul li:nth-child(1) { animation-delay: 0.2s; }
+    .box ul li:nth-child(2) { animation-delay: 0.4s; }
+    .box ul li:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .box ul li::before {
+      content: "🐰 ";
+      color: #ffd93d;
+      font-weight: bold;
+      animation: twinkle 1.5s infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .info-box {
+      text-align: left;
+      margin-top: 25px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .info-box h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #00c6ff;
+      padding-bottom: 8px;
+      animation: slideInLeft 1s ease;
+    }
+
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+      line-height: 1.8;
+    }
+
+    .info-box ul li {
+      padding: 8px 0;
+      animation: fadeIn 0.8s ease forwards;
+      position: relative;
+      padding-left: 30px;
+    }
+
+    /* Fixed Rocket Animation */
+    .info-box ul li::before {
+      content: "🚀";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: rocketFly 2s infinite;
+      display: inline-block;
+    }
+
+    @keyframes rocketFly {
+      0%, 100% { 
+        transform: translateY(-50%) translateX(0) rotate(0deg); 
+      }
+      25% { 
+        transform: translateY(-50%) translateX(3px) rotate(-5deg); 
+      }
+      50% { 
+        transform: translateY(-50%) translateX(0) rotate(0deg); 
+      }
+      75% { 
+        transform: translateY(-50%) translateX(-3px) rotate(5deg); 
+      }
+    }
+
+    .telegram-btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.2em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px #00c6ff;
+      animation: pulse 2s infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .telegram-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: 0.5s;
+    }
+
+    .telegram-btn:hover::before {
+      left: 100%;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 15px #00c6ff; }
+      50% { transform: scale(1.05); box-shadow: 0 0 25px #00c6ff; }
+    }
+
+    .telegram-btn:hover {
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #00c6ff;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #ccc;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      animation: floatParticle 10s infinite linear;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop>
+    <source src="bg.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="overlay"></div>
+
+  <!-- Floating Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="card">
+      <img src="file.png" alt="VIPIN" class="profile-pic" />
+      <h1>VIPIN</h1>
+      
+      <!-- Animated Stickers -->
+      <div class="sticker-container">
+        <div class="sticker sticker-1">🌟</div>
+        <div class="sticker sticker-2">💫</div>
+        <div class="sticker sticker-3">✨</div>
+        <div class="sticker sticker-4">❄️</div>
+      </div>
+      
+      <!-- Box Section -->
+      <div class="box">
+        <ul>
+          <li>Hɪ! I'ᴍ Vɪᴘɪɴ — ᴀ ᴘᴀʀᴛ ᴏғ Gᴏᴅ.</li>
+          <li>I ʟɪᴋᴇ ᴛᴏ ʜᴇʟᴘ ғɪɴᴀɴᴄɪᴀʟ ᴡᴇᴀᴋ sᴛᴜᴅᴇɴᴛ's.</li>
+          <li>I ᴡɪʟʟ ᴘʀᴏᴠɪᴅᴇ ᴘᴀɪᴅ ʟᴇᴄᴛᴜʀᴇ's ɪɴ ғʀᴇᴇ ᴏғ ᴄᴏsᴛ ғᴏʀ ᴏᴜʀ sᴛᴜᴅᴇɴᴛ's.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h2>𝐀𝐁𝐎𝐔𝐓 𝐌𝐄</h2>
+        <ul>
+          <li><strong>Country:</strong> ɪɴᴅɪᴀ</li>
+          <li><strong>Age:</strong> 𝟐𝟐</li>
+          <li><strong>Education:</strong> ᴋʜᴜᴅ sᴀᴍᴊʜ ᴊᴀᴏ.</li>
+          <li><strong>Hobbies:</strong> ʜᴏʙʙɪᴇs ᴊᴀɴɴᴇ ᴍᴇ ᴋʏᴀ ʀᴀᴋʜᴀ.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h2>𝐒𝐊𝐈𝐋𝐋𝐒</h2>
+        <ul>
+          <li>ʙᴀʜᴜᴛ ᴋᴜᴄʜʜ ᴀᴀᴛᴀ ʜᴀɪ ʙʜᴀɪ ᴏ ᴀʟᴀɢ ʙᴀᴛ ʜᴀɪ ᴋɪ ᴍᴇɪɴ ᴋᴜᴄʜʜ sʜᴏᴡ ɴᴀʜɪ ᴋᴀʀᴛᴀ🥴</li>
+        </ul>
+      </div>
+
+      <a href="https://t.me/KohinoorOfficial1" class="telegram-btn" target="_blank">
+        💬 Join My Telegram
+      </a>
+    </div>
+
+    <footer>
+      © 2025 TEAM KOHINOOR. All rights reserved by Team Kohinoor.<br>
+      MADE BY VIPIN | TEAM KOHINOOR
+    </footer>
+  </div>
+
+  <script>
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDelay = Math.random() * 10 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particle.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    createParticles();
+  </script>
+
+</body>
+</html>

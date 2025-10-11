@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VIPIN - WORLD'S</title>
+  <title>VIPIN - Happy Diwali</title>
   <style>
     * {
       margin: 0;
@@ -15,34 +15,214 @@
       height: 100%;
       font-family: 'Poppins', sans-serif;
       color: #fff;
-      overflow: hidden;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .animated-bg {
+    /* Automatic Background Image Slideshow */
+    .bg-slideshow {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(-45deg, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff, #9b59b6, #fd79a8);
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
-      z-index: -2;
+      z-index: -3;
     }
 
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .bg-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: bgAnimation 20s infinite;
     }
 
+    .bg-slide:nth-child(1) {
+      background-image: url('https://i.ibb.co/CKLRQsx3/968f8d83-251e-4a85-8640-02a71fa0824e.jpg');
+      animation-delay: 0s;
+    }
+
+    .bg-slide:nth-child(2) {
+      background-image: url('https://i.ibb.co/sdc0pQjv/49ef3945-17cf-4bab-9b6f-d2acadac0e5c.jpg');
+      animation-delay: 5s;
+    }
+
+    .bg-slide:nth-child(3) {
+      background-image: url('https://i.ibb.co/yBB4PTk9/Diwali.jpg');
+      animation-delay: 10s;
+    }
+
+    .bg-slide:nth-child(4) {
+      background-image: url('https://i.ibb.co/G3F27trJ/777930b597dfa36cb81b5fed0b9e33b6.jpg');
+      animation-delay: 15s;
+    }
+
+    @keyframes bgAnimation {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      25% { opacity: 1; }
+      35% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* Very light overlay for maximum background visibility */
     .overlay {
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: -2;
+    }
+
+    /* Jhalar Lighting - Top Decoration */
+    .jhalar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      z-index: 5;
+      padding: 15px;
+      background: linear-gradient(180deg, rgba(139,0,0,0.1) 0%, transparent 100%);
+    }
+
+    .light {
+      font-size: 1.8em;
+      animation: lightTwinkle 1.5s infinite alternate;
+      filter: drop-shadow(0 0 8px #ffd700);
+    }
+
+    .light:nth-child(odd) {
+      animation-delay: 0.5s;
+      color: #ff4500;
+    }
+
+    .light:nth-child(even) {
+      animation-delay: 1s;
+      color: #ffd700;
+    }
+
+    @keyframes lightTwinkle {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Rocket and Fireworks Styles */
+    .fireworks-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    .rocket {
+      position: absolute;
+      width: 12px;
+      height: 30px;
+      background: linear-gradient(to top, #ff4500, #ff8c00);
+      border-radius: 50% 50% 0 0;
+      animation: rocket-launch 3s ease-in forwards;
+      z-index: 16;
+      box-shadow: 0 0 15px #ff4500;
+    }
+
+    .rocket::before {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 2px;
+      width: 8px;
+      height: 20px;
+      background: linear-gradient(to bottom, #ffd700, #ff4500);
+      border-radius: 0 0 50% 50%;
+      animation: rocket-fire 0.2s infinite alternate;
+    }
+
+    @keyframes rocket-launch {
+      0% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(10deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes rocket-fire {
+      0% {
+        height: 15px;
+        opacity: 0.8;
+      }
+      100% {
+        height: 25px;
+        opacity: 1;
+      }
+    }
+
+    .particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: particle-explode 1s ease-out forwards;
+      z-index: 16;
+    }
+
+    @keyframes particle-explode {
+      0% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      100% {
+        transform: var(--transform-val);
+        opacity: 0;
+      }
+    }
+
+    /* Lantern Styles */
+    .lantern-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .lantern {
+      position: absolute;
+      font-size: 30px;
+      animation: lantern-float 20s linear forwards;
+      opacity: 0.7;
+    }
+
+    @keyframes lantern-float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      90% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     .container {
@@ -50,24 +230,27 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 60px 20px;
+      padding: 100px 20px 80px;
       height: 100%;
       overflow-y: auto;
       position: relative;
+      z-index: 10;
     }
 
+    /* Transparent card background for maximum background visibility */
     .card {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.3);
       border-radius: 20px;
       padding: 40px 30px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 215, 0, 0.6);
       text-align: center;
       max-width: 800px;
       width: 100%;
       animation: fadeIn 1.5s ease forwards;
       position: relative;
-      z-index: 2;
+      z-index: 11;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
     }
 
     @keyframes fadeIn {
@@ -80,11 +263,12 @@
       height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #fff;
+      border: 3px solid #ffd700;
       margin-bottom: 20px;
       animation: float 3s ease-in-out infinite;
       position: relative;
-      z-index: 3;
+      z-index: 12;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     }
 
     @keyframes float {
@@ -95,53 +279,23 @@
     h1 {
       font-size: 2.5em;
       margin-bottom: 10px;
-      background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff);
+      background: linear-gradient(45deg, #ffd700, #ff8c00, #ff4500, #ff0000);
       background-size: 400% 400%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: gradient 3s ease infinite;
       position: relative;
-      z-index: 3;
+      z-index: 12;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
     }
 
-    /* Bubbles - Pure page par idhar-udhar */
-    .bubbles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    .bubble {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
-      animation: bubbleFloat 12s linear infinite;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    @keyframes bubbleFloat {
-      0% {
-        transform: translateY(100vh) translateX(var(--start-x)) scale(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.8;
-      }
-      90% {
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(-100px) translateX(var(--end-x)) scale(var(--scale));
-        opacity: 0;
-      }
-    }
-
-    /* Animated Stickers */
+    /* Diwali themed stickers */
     .sticker-container {
       display: flex;
       justify-content: center;
@@ -149,13 +303,13 @@
       margin: 20px 0;
       flex-wrap: wrap;
       position: relative;
-      z-index: 3;
+      z-index: 12;
     }
 
     .sticker {
       font-size: 3em;
       animation: bounce 2s infinite, rotate 4s linear infinite;
-      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
     }
 
     .sticker-1 { animation-delay: 0s; }
@@ -173,23 +327,23 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Box Styling */
+    /* Transparent boxes for better background visibility */
     .box {
-      border: 2px solid #667eea;
+      border: 2px solid #ffd700;
       border-radius: 15px;
       padding: 25px;
       margin: 20px 0;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 215, 0, 0.6);
       animation: glow 2s ease-in-out infinite alternate;
       position: relative;
-      z-index: 3;
+      z-index: 12;
     }
 
     @keyframes glow {
-      from { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
-      to { box-shadow: 0 0 30px rgba(102, 126, 234, 0.8), 0 0 40px rgba(102, 126, 234, 0.6); }
+      from { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+      to { box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6); }
     }
 
     .box ul {
@@ -201,10 +355,12 @@
     .box ul li {
       padding: 12px 0;
       font-size: 1.2em;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 215, 0, 0.3);
       animation: slideIn 0.5s ease forwards;
       opacity: 0;
       transform: translateX(-20px);
+      color: #ffffff;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     }
 
     .box ul li:nth-child(1) { animation-delay: 0.2s; }
@@ -216,8 +372,8 @@
     }
 
     .box ul li::before {
-      content: "🐰 ";
-      color: #ffd93d;
+      content: "🪔 ";
+      color: #ffd700;
       font-weight: bold;
       animation: twinkle 1.5s infinite;
     }
@@ -232,7 +388,7 @@
       margin-top: 25px;
       animation: fadeInUp 1s ease forwards;
       position: relative;
-      z-index: 3;
+      z-index: 12;
     }
 
     @keyframes fadeInUp {
@@ -243,9 +399,11 @@
     .info-box h2 {
       font-size: 1.5em;
       margin-bottom: 15px;
-      border-bottom: 2px solid #00c6ff;
+      border-bottom: 2px solid #ff8c00;
       padding-bottom: 8px;
       animation: slideInLeft 1s ease;
+      color: #ffa500;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     }
 
     .info-box ul {
@@ -259,50 +417,53 @@
       animation: fadeIn 0.8s ease forwards;
       position: relative;
       padding-left: 30px;
+      color: #ffffff;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     }
 
-    /* Fixed Rocket Animation */
+    /* Diwali themed animation */
     .info-box ul li::before {
-      content: "🚀";
+      content: "🎆";
       position: absolute;
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      animation: rocketFly 2s infinite;
+      animation: fireworkSpin 2s infinite;
       display: inline-block;
     }
 
-    @keyframes rocketFly {
+    @keyframes fireworkSpin {
       0%, 100% { 
-        transform: translateY(-50%) translateX(0) rotate(0deg); 
+        transform: translateY(-50%) rotate(0deg); 
       }
       25% { 
-        transform: translateY(-50%) translateX(3px) rotate(-5deg); 
+        transform: translateY(-50%) rotate(90deg); 
       }
       50% { 
-        transform: translateY(-50%) translateX(0) rotate(0deg); 
+        transform: translateY(-50%) rotate(180deg); 
       }
       75% { 
-        transform: translateY(-50%) translateX(-3px) rotate(5deg); 
+        transform: translateY(-50%) rotate(270deg); 
       }
     }
 
+    /* Diwali themed button */
     .telegram-btn {
       display: inline-block;
       margin-top: 25px;
       padding: 15px 30px;
-      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      background: linear-gradient(135deg, #ff8c00, #ff4500);
       border: none;
       border-radius: 50px;
       color: white;
       font-size: 1.2em;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 0 15px #00c6ff;
+      box-shadow: 0 0 15px #ff8c00;
       animation: pulse 2s infinite;
       position: relative;
       overflow: hidden;
-      z-index: 3;
+      z-index: 12;
     }
 
     .telegram-btn::before {
@@ -321,79 +482,191 @@
     }
 
     @keyframes pulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 15px #00c6ff; }
-      50% { transform: scale(1.05); box-shadow: 0 0 25px #00c6ff; }
+      0%, 100% { transform: scale(1); box-shadow: 0 0 15px #ff8c00; }
+      50% { transform: scale(1.05); box-shadow: 0 0 25px #ff8c00; }
     }
 
     .telegram-btn:hover {
-      background: linear-gradient(135deg, #0072ff, #00c6ff);
+      background: linear-gradient(135deg, #ff4500, #ff8c00);
       transform: scale(1.1);
-      box-shadow: 0 0 30px #00c6ff;
+      box-shadow: 0 0 30px #ff8c00;
+    }
+
+    /* Diwali Countdown Timer */
+    .countdown-container {
+      margin: 25px 0;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      border: 2px solid #ffd700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+      position: relative;
+      z-index: 12;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    .countdown-title {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #ffd700;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+
+    .countdown-value {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #ffd700;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 2px solid #ff8c00;
+      min-width: 70px;
+      animation: countdownPulse 1s infinite alternate;
+    }
+
+    .countdown-label {
+      font-size: 0.9em;
+      margin-top: 5px;
+      color: #ffa500;
+      text-transform: uppercase;
+    }
+
+    @keyframes countdownPulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    .diwali-date {
+      margin-top: 15px;
+      font-size: 1.2em;
+      color: #ffd700;
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+
+    /* Shubh Diwali Coming Soon Button */
+    .diwali-btn {
+      display: inline-block;
+      margin: 25px 10px;
+      padding: 18px 35px;
+      background: linear-gradient(135deg, #ffd700, #ff8c00, #ff4500);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.4em;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px #ffd700;
+      animation: diwaliPulse 2s infinite;
+      position: relative;
+      overflow: hidden;
+      z-index: 12;
+      cursor: pointer;
+    }
+
+    .diwali-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.5s;
+    }
+
+    .diwali-btn:hover::before {
+      left: 100%;
+    }
+
+    @keyframes diwaliPulse {
+      0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 0 20px #ffd700, 0 0 30px #ff8c00;
+      }
+      50% { 
+        transform: scale(1.08); 
+        box-shadow: 0 0 30px #ffd700, 0 0 40px #ff8c00, 0 0 50px #ff4500;
+      }
+    }
+
+    .diwali-btn:hover {
+      background: linear-gradient(135deg, #ff4500, #ff8c00, #ffd700);
+      transform: scale(1.12);
+      box-shadow: 0 0 40px #ffd700, 0 0 60px #ff8c00;
     }
 
     footer {
       margin-top: 40px;
       font-size: 0.9em;
-      color: #ccc;
+      color: #ffa500;
       text-align: center;
       animation: fadeIn 2s ease;
       position: relative;
-      z-index: 3;
-    }
-
-    /* Floating particles */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: #fff;
-      border-radius: 50%;
-      animation: floatParticle 10s infinite linear;
-    }
-
-    @keyframes floatParticle {
-      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+      z-index: 12;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     }
   </style>
 </head>
 <body>
 
-  <!-- Animated Gradient Background with 6 Colors -->
-  <div class="animated-bg"></div>
+  <!-- Automatic Background Image Slideshow -->
+  <div class="bg-slideshow">
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+  </div>
+
+  <!-- Very light overlay for maximum background visibility -->
   <div class="overlay"></div>
 
-  <!-- Floating Particles -->
-  <div class="particles" id="particles"></div>
+  <!-- Jhalar Lighting - Top Decoration -->
+  <div class="jhalar-container">
+    <div class="light">💡</div>
+    <div class="light">✨</div>
+    <div class="light">💡</div>
+    <div class="light">✨</div>
+    <div class="light">💡</div>
+    <div class="light">✨</div>
+    <div class="light">💡</div>
+    <div class="light">✨</div>
+  </div>
 
-  <!-- Bubbles - Pure page par idhar-udhar -->
-  <div class="bubbles" id="bubbles"></div>
+  <!-- Lantern Container -->
+  <div class="lantern-container" id="lantern-container"></div>
+
+  <!-- Fireworks Container -->
+  <div class="fireworks-container" id="fireworks-container"></div>
 
   <!-- Content -->
   <div class="container">
     <div class="card">
       <!-- Your Hosted DP -->
       <img src="https://envs.sh/KLH.jpg" alt="VIPIN" class="profile-pic" />
-      <h1>VIPIN</h1>
+      <h1>🪔 VIPIN 🪔</h1>
       
-      <!-- Animated Stickers -->
+      <!-- Diwali themed Stickers -->
       <div class="sticker-container">
-        <div class="sticker sticker-1">🌟</div>
-        <div class="sticker sticker-2">💫</div>
+        <div class="sticker sticker-1">🪔</div>
+        <div class="sticker sticker-2">🎆</div>
         <div class="sticker sticker-3">✨</div>
-        <div class="sticker sticker-4">❄️</div>
+        <div class="sticker sticker-4">🎇</div>
       </div>
       
       <!-- Box Section -->
@@ -421,6 +694,10 @@
           <li>ʙᴀʜᴜᴛ ᴋᴜᴄʜʜ ᴀᴀᴛᴀ ʜᴀɪ ʙʜᴀɪ ᴏ ᴀʟᴀɢ ʙᴀᴛ ʜᴀɪ ᴋɪ ᴍᴇɪɴ ᴋᴜᴄʜʜ sʜᴏᴡ ɴᴀʜɪ ᴋᴀʀᴛᴀ🥴</li>
         </ul>
       </div>
+      <!-- Shubh Diwali Coming Soon Button -->
+      <button class="diwali-btn">
+        🪔 शुभ दिवाली    Coming Soon 🪔
+      </button>
 
       <a href="https://t.me/KohinoorOfficial1" class="telegram-btn" target="_blank">
         💬 Join My Telegram
@@ -429,65 +706,51 @@
 
     <footer>
       © 2025 TEAM KOHINOOR. All rights reserved by Team Kohinoor.<br>
-      MADE BY VIPIN | TEAM KOHINOOR
+      MADE BY VIPIN | TEAM KOHINOOR<br>
+      🪔 Happy Diwali! 🪔
     </footer>
   </div>
 
   <script>
-    // Create floating particles
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 50;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + 'vw';
-        particle.style.animationDelay = Math.random() * 10 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        particle.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
-        particlesContainer.appendChild(particle);
-      }
+    // Rocket and Fireworks Code
+    const fireworksContainer = document.getElementById('fireworks-container');
+    const lanternContainer = document.getElementById('lantern-container');
+    const colors = ['#ff4500', '#ffd700', '#ff69b4', '#00ff00', '#1e90ff', '#ffffff'];
+
+    // Function to create an explosion at a specific position
+    function explode(x, y) {
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.background = color;
+            particle.style.boxShadow = `0 0 10px ${color}`;
+            
+            const angle = Math.random() * 360;
+            const distance = Math.random() * 150 + 50;
+            const translateX = Math.cos(angle * (Math.PI / 180)) * distance;
+            const translateY = Math.sin(angle * (Math.PI / 180)) * distance;
+            
+            particle.style.setProperty('--transform-val', `translate(${translateX}px, ${translateY}px)`);
+
+            fireworksContainer.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 1000);
+        }
     }
 
-    // Create bubbles - pure page par idhar-udhar
-    function createBubbles() {
-      const bubblesContainer = document.getElementById('bubbles');
-      const bubbleCount = 25;
-      
-      for (let i = 0; i < bubbleCount; i++) {
-        const bubble = document.createElement('div');
-        bubble.className = 'bubble';
-        
-        // Random size between 15px to 50px
-        const size = Math.random() * 35 + 15;
-        bubble.style.width = `${size}px`;
-        bubble.style.height = `${size}px`;
-        
-        // Random start position (bottom se)
-        const startX = Math.random() * 100;
-        bubble.style.setProperty('--start-x', startX + 'vw');
-        
-        // Random end position (thoda left-right move karega)
-        const endX = (Math.random() * 100 - 50) + startX;
-        bubble.style.setProperty('--end-x', endX + 'px');
-        
-        // Random animation delay
-        bubble.style.animationDelay = Math.random() * 8 + 's';
-        
-        // Random scale
-        bubble.style.setProperty('--scale', Math.random() * 0.8 + 0.5);
-        
-        // Random animation duration
-        bubble.style.animationDuration = (8 + Math.random() * 10) + 's';
-        
-        bubblesContainer.appendChild(bubble);
-      }
-    }
-    
-    createParticles();
-    createBubbles();
-  </script>
+    // Function to create a single rocket
+    function createRocket() {
+        const rocket = document.createElement('div');
+        rocket.className = 'rocket';
+        rocket.style.left = Math.random() * window.innerWidth + 'px';
+        rocket.style.bottom = '0px';
 
-</body>
-  </html>
+        fireworksContainer.appendChild(rocket);
+
+        rocket.addEventListene

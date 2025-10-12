@@ -607,6 +607,47 @@
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     }
 
+    /* View Counter Styles */
+    .view-counter {
+      position: fixed;
+      bottom: 15px;
+      left: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #ffd700;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      animation: viewCounterGlow 3s infinite alternate;
+    }
+
+    @keyframes viewCounterGlow {
+      0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+      100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); }
+    }
+
+    .view-counter .eye-icon {
+      font-size: 1.2em;
+      animation: blink 4s infinite;
+    }
+
+    @keyframes blink {
+      0%, 45%, 55%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .view-count {
+      font-weight: bold;
+      color: #ffa500;
+      text-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+    }
+
     @media (max-width: 600px) {
       .countdown-row {
         flex-wrap: wrap;
@@ -627,6 +668,11 @@
       
       .wishes-message {
         font-size: 1.1em;
+      }
+      
+      .view-counter {
+        font-size: 0.8em;
+        padding: 6px 12px;
       }
     }
   </style>
@@ -663,6 +709,12 @@
 
   <!-- Lantern Container -->
   <div class="lantern-container" id="lantern-container"></div>
+
+  <!-- View Counter -->
+  <div class="view-counter">
+    <span class="eye-icon">👁️</span>
+    <span>Views: <span class="view-count" id="viewCount">0</span></span>
+  </div>
 
   <!-- Content -->
   <div class="container">
@@ -733,7 +785,7 @@
         <div class="diwali-date">Diwali 2025: October 20, 2025</div>
       </div>
 
-      <!-- Diwali Wishes - Will be shown when countdown ends -->
+            <!-- Diwali Wishes - Will be shown when countdown ends -->
       <div class="diwali-wishes" id="diwali-wishes">
         <div class="wishes-title">🪔 Happy Diwali! 🪔</div>
         <div class="wishes-message">
@@ -764,6 +816,28 @@
   </div>
 
   <script>
+    // View Counter Functionality
+    function updateViewCounter() {
+      // Get current view count from localStorage
+      let viewCount = localStorage.getItem('diwaliViewCount');
+      
+      // If it doesn't exist, initialize with 0
+      if (!viewCount) {
+        viewCount = 0;
+      } else {
+        viewCount = parseInt(viewCount);
+      }
+      
+      // Increment the view count
+      viewCount++;
+      
+      // Save back to localStorage
+      localStorage.setItem('diwaliViewCount', viewCount);
+      
+      // Update the display
+      document.getElementById('viewCount').textContent = viewCount.toLocaleString();
+    }
+
     // Function to create sky lanterns
     function createLanterns() {
       const lanternContainer = document.getElementById('lantern-container');
@@ -811,6 +885,9 @@
       document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
     }
 
+    // Initialize view counter
+    updateViewCounter();
+    
     // Initialize countdown
     updateCountdown();
     

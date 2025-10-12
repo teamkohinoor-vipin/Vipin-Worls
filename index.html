@@ -19,7 +19,7 @@
       position: relative;
     }
 
-    /* Automatic Background Image Slideshow */
+    /* Background Image Slideshow */
     .bg-slideshow {
       position: fixed;
       top: 0;
@@ -38,45 +38,70 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      animation: bgAnimation 20s infinite;
+      animation: bgAnimation 30s infinite;
     }
 
     .bg-slide:nth-child(1) {
-      background-image: url('https://i.ibb.co/CKLRQsx3/968f8d83-251e-4a85-8640-02a71fa0824e.jpg');
+      background-image: url('https://i.ibb.co/S42YdXDf/Happy-Diwali-by-Ranganath-iphone-11-pro.jpg');
       animation-delay: 0s;
     }
 
     .bg-slide:nth-child(2) {
-      background-image: url('https://i.ibb.co/sdc0pQjv/49ef3945-17cf-4bab-9b6f-d2acadac0e5c.jpg');
+      background-image: url('https://i.ibb.co/k2SccyWF/images-26.jpg');
       animation-delay: 5s;
     }
 
     .bg-slide:nth-child(3) {
-      background-image: url('https://i.ibb.co/yBB4PTk9/Diwali.jpg');
+      background-image: url('https://i.ibb.co/Wpx6gzHj/images-25.jpg');
       animation-delay: 10s;
     }
 
     .bg-slide:nth-child(4) {
-      background-image: url('https://i.ibb.co/G3F27trJ/777930b597dfa36cb81b5fed0b9e33b6.jpg');
+      background-image: url('https://i.ibb.co/B2Y4XbwW/968f8d83-251e-4a85-8640-02a71fa0824e.jpg');
       animation-delay: 15s;
+    }
+
+    .bg-slide:nth-child(5) {
+      background-image: url('https://i.ibb.co/3mfjpmyL/Happy-Diwali-Wishes-Quotes-SMS-2020-iphone-12-pro-max.jpg');
+      animation-delay: 20s;
+    }
+
+    .bg-slide:nth-child(6) {
+      background-image: url('https://i.ibb.co/XxwVHWz3/423644bec1d12fcdd29c62380e426c3d.jpg');
+      animation-delay: 25s;
+    }
+
+    .bg-slide:nth-child(7) {
+      background-image: url('https://i.ibb.co/spMyt0sv/c805c0ff51415c505ddc2630fbea1b31.jpg');
+      animation-delay: 30s;
+    }
+
+    .bg-slide:nth-child(8) {
+      background-image: url('https://i.ibb.co/7Jjkwyzd/777930b597dfa36cb81b5fed0b9e33b6.jpg');
+      animation-delay: 35s;
+    }
+
+    .bg-slide:nth-child(9) {
+      background-image: url('https://i.ibb.co/7dW7TSk9/Diwali.jpg');
+      animation-delay: 40s;
     }
 
     @keyframes bgAnimation {
       0% { opacity: 0; }
-      10% { opacity: 1; }
-      25% { opacity: 1; }
-      35% { opacity: 0; }
+      8% { opacity: 1; }
+      17% { opacity: 1; }
+      25% { opacity: 0; }
       100% { opacity: 0; }
     }
 
-    /* Very light overlay for maximum background visibility */
+    /* Overlay for better text visibility */
     .overlay {
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.1);
-      z-index: -2;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: -1;
     }
 
     /* Jhalar Lighting - Top Decoration */
@@ -111,83 +136,6 @@
     @keyframes lightTwinkle {
       0%, 100% { opacity: 0.3; transform: scale(0.8); }
       50% { opacity: 1; transform: scale(1.2); }
-    }
-
-    /* Rocket and Fireworks Styles */
-    .fireworks-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 15;
-    }
-
-    .rocket {
-      position: absolute;
-      width: 12px;
-      height: 30px;
-      background: linear-gradient(to top, #ff4500, #ff8c00);
-      border-radius: 50% 50% 0 0;
-      animation: rocket-launch 3s ease-in forwards;
-      z-index: 16;
-      box-shadow: 0 0 15px #ff4500;
-    }
-
-    .rocket::before {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 2px;
-      width: 8px;
-      height: 20px;
-      background: linear-gradient(to bottom, #ffd700, #ff4500);
-      border-radius: 0 0 50% 50%;
-      animation: rocket-fire 0.2s infinite alternate;
-    }
-
-    @keyframes rocket-launch {
-      0% {
-        transform: translateY(0) rotate(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(10deg);
-        opacity: 0;
-      }
-    }
-
-    @keyframes rocket-fire {
-      0% {
-        height: 15px;
-        opacity: 0.8;
-      }
-      100% {
-        height: 25px;
-        opacity: 1;
-      }
-    }
-
-    .particle {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      pointer-events: none;
-      animation: particle-explode 1s ease-out forwards;
-      z-index: 16;
-    }
-
-    @keyframes particle-explode {
-      0% {
-        transform: translate(0, 0);
-        opacity: 1;
-      }
-      100% {
-        transform: var(--transform-val);
-        opacity: 0;
-      }
     }
 
     /* Lantern Styles */
@@ -237,7 +185,7 @@
       z-index: 10;
     }
 
-    /* Transparent card background for maximum background visibility */
+    /* Card background */
     .card {
       background: rgba(0, 0, 0, 0.3);
       border-radius: 20px;
@@ -327,7 +275,7 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Transparent boxes for better background visibility */
+    /* Boxes */
     .box {
       border: 2px solid #ffd700;
       border-radius: 15px;
@@ -455,7 +403,7 @@
       background: linear-gradient(135deg, #ff8c00, #ff4500);
       border: none;
       border-radius: 50px;
-      color: white;
+      color: #8b0000;
       font-size: 1.2em;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -464,6 +412,7 @@
       position: relative;
       overflow: hidden;
       z-index: 12;
+      font-weight: bold;
     }
 
     .telegram-btn::before {
@@ -490,6 +439,7 @@
       background: linear-gradient(135deg, #ff4500, #ff8c00);
       transform: scale(1.1);
       box-shadow: 0 0 30px #ff8c00;
+      color: #8b0000;
     }
 
     /* Diwali Countdown Timer */
@@ -503,10 +453,13 @@
       position: relative;
       z-index: 12;
       animation: glow 2s ease-in-out infinite alternate;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .countdown-title {
-      font-size: 1.8em;
+      font-size: 1.5em;
       margin-bottom: 15px;
       color: #ffd700;
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
@@ -514,9 +467,14 @@
 
     .countdown-timer {
       display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .countdown-row {
+      display: flex;
       justify-content: center;
       gap: 15px;
-      flex-wrap: wrap;
     }
 
     .countdown-item {
@@ -527,12 +485,12 @@
     }
 
     .countdown-value {
-      font-size: 2.5em;
+      font-size: 1.8em;
       font-weight: bold;
       color: #ffd700;
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
       background: rgba(0, 0, 0, 0.6);
-      padding: 10px 15px;
+      padding: 8px 12px;
       border-radius: 10px;
       border: 2px solid #ff8c00;
       min-width: 70px;
@@ -540,7 +498,7 @@
     }
 
     .countdown-label {
-      font-size: 0.9em;
+      font-size: 0.8em;
       margin-top: 5px;
       color: #ffa500;
       text-transform: uppercase;
@@ -553,7 +511,7 @@
 
     .diwali-date {
       margin-top: 15px;
-      font-size: 1.2em;
+      font-size: 1em;
       color: #ffd700;
       text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
     }
@@ -561,18 +519,18 @@
     /* Shubh Diwali Coming Soon Button */
     .diwali-btn {
       display: inline-block;
-      margin: 25px 10px;
-      padding: 18px 35px;
+      margin: 1px;
+      padding: 12px 20px;
       background: linear-gradient(135deg, #ffd700, #ff8c00, #ff4500);
       border: none;
       border-radius: 50px;
-      color: white;
-      font-size: 1.4em;
+      color: #8b0000;
+      font-size: 1.2em;
       font-weight: bold;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 0 20px #ffd700;
-      animation: diwaliPulse 2s infinite;
+      box-shadow: 0 0 15px #ffd700;
+      animation: pulse 2s infinite;
       position: relative;
       overflow: hidden;
       z-index: 12;
@@ -586,7 +544,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       transition: 0.5s;
     }
 
@@ -594,46 +552,55 @@
       left: 100%;
     }
 
-    @keyframes diwaliPulse {
-      0%, 100% { 
-        transform: scale(1); 
-        box-shadow: 0 0 20px #ffd700, 0 0 30px #ff8c00;
-      }
-      50% { 
-        transform: scale(1.08); 
-        box-shadow: 0 0 30px #ffd700, 0 0 40px #ff8c00, 0 0 50px #ff4500;
-      }
-    }
-
     .diwali-btn:hover {
       background: linear-gradient(135deg, #ff4500, #ff8c00, #ffd700);
-      transform: scale(1.12);
-      box-shadow: 0 0 40px #ffd700, 0 0 60px #ff8c00;
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #ffd700;
     }
 
     footer {
       margin-top: 40px;
       font-size: 0.9em;
-      color: #ffa500;
+      color: #fffa60;
       text-align: center;
       animation: fadeIn 2s ease;
       position: relative;
       z-index: 12;
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     }
+
+    @media (max-width: 600px) {
+      .countdown-row {
+        flex-wrap: wrap;
+      }
+      
+      .countdown-item {
+        min-width: 70px;
+      }
+      
+      .countdown-value {
+        font-size: 1.5em;
+        min-width: 60px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Automatic Background Image Slideshow -->
+  <!-- Background Image Slideshow -->
   <div class="bg-slideshow">
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
   </div>
 
-  <!-- Very light overlay for maximum background visibility -->
+  <!-- Overlay for better text visibility -->
   <div class="overlay"></div>
 
   <!-- Jhalar Lighting - Top Decoration -->
@@ -650,9 +617,6 @@
 
   <!-- Lantern Container -->
   <div class="lantern-container" id="lantern-container"></div>
-
-  <!-- Fireworks Container -->
-  <div class="fireworks-container" id="fireworks-container"></div>
 
   <!-- Content -->
   <div class="container">
@@ -694,9 +658,38 @@
           <li>ʙᴀʜᴜᴛ ᴋᴜᴄʜʜ ᴀᴀᴛᴀ ʜᴀɪ ʙʜᴀɪ ᴏ ᴀʟᴀɢ ʙᴀᴛ ʜᴀɪ ᴋɪ ᴍᴇɪɴ ᴋᴜᴄʜʜ sʜᴏᴡ ɴᴀʜɪ ᴋᴀʀᴛᴀ🥴</li>
         </ul>
       </div>
+
+      <!-- Diwali Countdown Timer -->
+      <div class="countdown-container">
+        <div class="countdown-title">🪔 Diwali Countdown 🪔</div>
+        <div class="countdown-timer">
+          <div class="countdown-row">
+            <div class="countdown-item">
+              <div class="countdown-value" id="days">00</div>
+              <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-value" id="hours">00</div>
+              <div class="countdown-label">Hours</div>
+            </div>
+          </div>
+          <div class="countdown-row">
+            <div class="countdown-item">
+              <div class="countdown-value" id="minutes">00</div>
+              <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-value" id="seconds">00</div>
+              <div class="countdown-label">Seconds</div>
+            </div>
+          </div>
+        </div>
+        <div class="diwali-date">Diwali 2025: October 20, 2025</div>
+      </div>
+
       <!-- Shubh Diwali Coming Soon Button -->
       <button class="diwali-btn">
-        🪔 शुभ दिवाली    Coming Soon 🪔
+        🎇 Celebrate Diwali! 🎇
       </button>
 
       <a href="https://t.me/KohinoorOfficial1" class="telegram-btn" target="_blank">
@@ -712,45 +705,61 @@
   </div>
 
   <script>
-    // Rocket and Fireworks Code
-    const fireworksContainer = document.getElementById('fireworks-container');
-    const lanternContainer = document.getElementById('lantern-container');
-    const colors = ['#ff4500', '#ffd700', '#ff69b4', '#00ff00', '#1e90ff', '#ffffff'];
+    // Function to create sky lanterns
+    function createLanterns() {
+      const lanternContainer = document.getElementById('lantern-container');
+      setInterval(() => {
+        const lantern = document.createElement('div');
+        lantern.className = 'lantern';
+        lantern.innerHTML = '🪔';
+        lantern.style.left = Math.random() * 100 + 'vw';
+        lantern.style.animationDuration = Math.random() * 10 + 15 + 's';
+        lantern.style.animationDelay = Math.random() * 5 + 's';
 
-    // Function to create an explosion at a specific position
-    function explode(x, y) {
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = x + 'px';
-            particle.style.top = y + 'px';
-            
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.background = color;
-            particle.style.boxShadow = `0 0 10px ${color}`;
-            
-            const angle = Math.random() * 360;
-            const distance = Math.random() * 150 + 50;
-            const translateX = Math.cos(angle * (Math.PI / 180)) * distance;
-            const translateY = Math.sin(angle * (Math.PI / 180)) * distance;
-            
-            particle.style.setProperty('--transform-val', `translate(${translateX}px, ${translateY}px)`);
+        lanternContainer.appendChild(lantern);
 
-            fireworksContainer.appendChild(particle);
-
-            setTimeout(() => {
-                particle.remove();
-            }, 1000);
-        }
+        setTimeout(() => {
+          lantern.remove();
+        }, 25000); 
+      }, 1500);
     }
 
-    // Function to create a single rocket
-    function createRocket() {
-        const rocket = document.createElement('div');
-        rocket.className = 'rocket';
-        rocket.style.left = Math.random() * window.innerWidth + 'px';
-        rocket.style.bottom = '0px';
+    // Diwali Countdown Timer
+    function updateCountdown() {
+      // Diwali 2025 date - October 20, 2025 at 00:00:00
+      const diwaliDate = new Date("October 20, 2025 00:00:00").getTime();
+      const now = new Date().getTime();
+      const timeLeft = diwaliDate - now;
 
-        fireworksContainer.appendChild(rocket);
+      // Check if the countdown is over
+      if (timeLeft < 0) {
+        document.querySelector('.countdown-title').innerHTML = "🪔 Happy Diwali! 🪔";
+        document.querySelector('.countdown-timer').style.display = 'none';
+        clearInterval(countdownTimer);
+        return;
+      }
 
-        rocket.addEventListene
+      // Calculate days, hours, minutes, and seconds
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      // Update the countdown elements
+      document.getElementById('days').innerText = days.toString().padStart(2, '0');
+      document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+    }
+
+    // Initialize countdown
+    updateCountdown();
+    
+    // Update countdown every second
+    const countdownTimer = setInterval(updateCountdown, 1000);
+
+    // Initialize animations
+    createLanterns();
+  </script>
+</body>
+    </html>

@@ -19,14 +19,14 @@
       position: relative;
     }
 
-    /* Background Image Slideshow */
+    /* Background Slideshow */
     .bg-slideshow {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -3;
+      z-index: -2;
     }
 
     .bg-slide {
@@ -38,66 +38,59 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      animation: bgAnimation 30s infinite;
+      animation: slideShow 36s infinite;
     }
 
     .bg-slide:nth-child(1) {
-      background-image: url('https://i.ibb.co/S42YdXDf/Happy-Diwali-by-Ranganath-iphone-11-pro.jpg');
+      background-image: url('https://i.ibb.co/XZKqSL7F/Happy-Diwali-by-Ranganath-iphone-11-pro.jpg');
       animation-delay: 0s;
     }
-
     .bg-slide:nth-child(2) {
-      background-image: url('https://i.ibb.co/k2SccyWF/images-26.jpg');
-      animation-delay: 5s;
+      background-image: url('https://i.ibb.co/4wPWVXB6/images-26.jpg');
+      animation-delay: 4s;
     }
-
     .bg-slide:nth-child(3) {
-      background-image: url('https://i.ibb.co/Wpx6gzHj/images-25.jpg');
-      animation-delay: 10s;
+      background-image: url('https://i.ibb.co/p6bzLCLM/c805c0ff51415c505ddc2630fbea1b31.jpg');
+      animation-delay: 8s;
     }
-
     .bg-slide:nth-child(4) {
-      background-image: url('https://i.ibb.co/B2Y4XbwW/968f8d83-251e-4a85-8640-02a71fa0824e.jpg');
-      animation-delay: 15s;
+      background-image: url('https://i.ibb.co/YmnkCmz/49ef3945-17cf-4bab-9b6f-d2acadac0e5c.jpg');
+      animation-delay: 12s;
     }
-
     .bg-slide:nth-child(5) {
-      background-image: url('https://i.ibb.co/3mfjpmyL/Happy-Diwali-Wishes-Quotes-SMS-2020-iphone-12-pro-max.jpg');
+      background-image: url('https://i.ibb.co/hFkxpPn1/Diwali.jpg');
+      animation-delay: 16s;
+    }
+    .bg-slide:nth-child(6) {
+      background-image: url('https://i.ibb.co/hRXXqW4w/Happy-Diwali-Wishes-Quotes-SMS-2020-iphone-12-pro-max.jpg');
       animation-delay: 20s;
     }
-
-    .bg-slide:nth-child(6) {
-      background-image: url('https://i.ibb.co/XxwVHWz3/423644bec1d12fcdd29c62380e426c3d.jpg');
-      animation-delay: 25s;
-    }
-
     .bg-slide:nth-child(7) {
-      background-image: url('https://i.ibb.co/spMyt0sv/c805c0ff51415c505ddc2630fbea1b31.jpg');
-      animation-delay: 30s;
+      background-image: url('https://i.ibb.co/nqTy8jnV/423644bec1d12fcdd29c62380e426c3d.jpg');
+      animation-delay: 24s;
     }
-
     .bg-slide:nth-child(8) {
-      background-image: url('https://i.ibb.co/7Jjkwyzd/777930b597dfa36cb81b5fed0b9e33b6.jpg');
-      animation-delay: 35s;
+      background-image: url('https://i.ibb.co/8DpNFttk/images-25.jpg');
+      animation-delay: 28s;
     }
-
     .bg-slide:nth-child(9) {
-      background-image: url('https://i.ibb.co/7dW7TSk9/Diwali.jpg');
-      animation-delay: 40s;
+      background-image: url('https://i.ibb.co/zTfw6p4j/968f8d83-251e-4a85-8640-02a71fa0824e.jpg');
+      animation-delay: 32s;
     }
 
-    @keyframes bgAnimation {
+    @keyframes slideShow {
       0% { opacity: 0; }
-      8% { opacity: 1; }
-      17% { opacity: 1; }
-      25% { opacity: 0; }
+      10% { opacity: 1; }
+      20% { opacity: 1; }
+      30% { opacity: 0; }
       100% { opacity: 0; }
     }
 
     /* Overlay for better text visibility */
     .overlay {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.3);
@@ -113,7 +106,7 @@
       display: flex;
       justify-content: space-around;
       z-index: 5;
-      padding: 15px;
+      padding: 10px;
       background: linear-gradient(180deg, rgba(139,0,0,0.1) 0%, transparent 100%);
     }
 
@@ -398,12 +391,12 @@
     /* Diwali themed button */
     .telegram-btn {
       display: inline-block;
-      margin-top: 25px;
-      padding: 15px 30px;
+      margin-top: 1px;
+      padding: 12px 15px;
       background: linear-gradient(135deg, #ff8c00, #ff4500);
       border: none;
       border-radius: 50px;
-      color: #8b0000;
+      color: white;
       font-size: 1.2em;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -516,11 +509,56 @@
       text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
     }
 
-    /* Shubh Diwali Coming Soon Button */
+    /* Diwali Wishes - Hidden by default */
+    .diwali-wishes {
+      display: none;
+      margin: 25px 0;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      border: 2px solid #ffd700;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+      position: relative;
+      z-index: 12;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      animation: wishesGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes wishesGlow {
+      from { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+      to { box-shadow: 0 0 40px rgba(255, 215, 0, 0.9), 0 0 60px rgba(255, 215, 0, 0.7); }
+    }
+
+    .wishes-title {
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      color: #ffd700;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+      animation: pulse 2s infinite;
+    }
+
+    .wishes-message {
+      font-size: 1.3em;
+      line-height: 1.6;
+      color: #ffffff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    }
+
+    .wishes-stickers {
+      font-size: 3em;
+      margin-top: 15px;
+      animation: bounce 2s infinite;
+    }
+
+    /* Shubh Diwali Coming Soon Button - Fixed Size */
     .diwali-btn {
       display: inline-block;
-      margin: 1px;
-      padding: 12px 20px;
+      margin: 15px;
+      padding: 12px 7px;
       background: linear-gradient(135deg, #ffd700, #ff8c00, #ff4500);
       border: none;
       border-radius: 50px;
@@ -561,7 +599,7 @@
     footer {
       margin-top: 40px;
       font-size: 0.9em;
-      color: #fffa60;
+      color: #ffd600;
       text-align: center;
       animation: fadeIn 2s ease;
       position: relative;
@@ -581,6 +619,14 @@
       .countdown-value {
         font-size: 1.5em;
         min-width: 60px;
+      }
+      
+      .wishes-title {
+        font-size: 1.8em;
+      }
+      
+      .wishes-message {
+        font-size: 1.1em;
       }
     }
   </style>
@@ -660,7 +706,7 @@
       </div>
 
       <!-- Diwali Countdown Timer -->
-      <div class="countdown-container">
+      <div class="countdown-container" id="countdown-container">
         <div class="countdown-title">🪔 Diwali Countdown 🪔</div>
         <div class="countdown-timer">
           <div class="countdown-row">
@@ -687,13 +733,26 @@
         <div class="diwali-date">Diwali 2025: October 20, 2025</div>
       </div>
 
+      <!-- Diwali Wishes - Will be shown when countdown ends -->
+      <div class="diwali-wishes" id="diwali-wishes">
+        <div class="wishes-title">🪔 Happy Diwali! 🪔</div>
+        <div class="wishes-message">
+          May the divine light of Diwali spread into your life<br>
+          Peace, Prosperity, Happiness and Good Health.<br>
+          Wishing you and your family a very Happy Diwali!
+        </div>
+        <div class="wishes-stickers">
+          🪔🎆✨🎇💥
+        </div>
+      </div>
+
       <!-- Shubh Diwali Coming Soon Button -->
       <button class="diwali-btn">
         🎇 Celebrate Diwali! 🎇
       </button>
 
       <a href="https://t.me/KohinoorOfficial1" class="telegram-btn" target="_blank">
-        💬 Join My Telegram
+        💬 Join My Telegram 
       </a>
     </div>
 
@@ -715,7 +774,6 @@
         lantern.style.left = Math.random() * 100 + 'vw';
         lantern.style.animationDuration = Math.random() * 10 + 15 + 's';
         lantern.style.animationDelay = Math.random() * 5 + 's';
-
         lanternContainer.appendChild(lantern);
 
         setTimeout(() => {
@@ -733,8 +791,9 @@
 
       // Check if the countdown is over
       if (timeLeft < 0) {
-        document.querySelector('.countdown-title').innerHTML = "🪔 Happy Diwali! 🪔";
-        document.querySelector('.countdown-timer').style.display = 'none';
+        // Hide countdown and show wishes
+        document.getElementById('countdown-container').style.display = 'none';
+        document.getElementById('diwali-wishes').style.display = 'block';
         clearInterval(countdownTimer);
         return;
       }
@@ -761,5 +820,6 @@
     // Initialize animations
     createLanterns();
   </script>
+
 </body>
-    </html>
+</html>

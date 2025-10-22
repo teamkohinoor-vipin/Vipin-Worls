@@ -1,0 +1,642 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRDbots - Free Telegram Bot Hosting</title>
+    <link rel="stylesheet" href="css/all.min_1.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #ff5722;
+            --primary-dark: #c41c00;
+            --bg-light: #ffffff;
+            --bg-dark: #121212;
+            --text-light: #212121;
+            --text-dark: #f5f5f5;
+            --card-light: #f9f9f9;
+            --card-dark: rgba(18, 18, 18, 0.8);
+            --border-light: rgba(0, 0, 0, 0.1);
+            --border-dark: rgba(255, 87, 34, 0.2);
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-dark: rgba(255, 87, 34, 0.1);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-light);
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e1e1e 100%);
+            color: var(--text-dark);
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 87, 34, 0.2);
+            box-shadow: 0 4px 8px var(--shadow-light);
+            border-radius: 10px;
+        }
+        
+        .dark .glass {
+            background: rgba(0, 40, 56, 0.5);
+            border: 1px solid rgba(255, 87, 34, 0.3);
+            box-shadow: 0 4px 8px var(--shadow-dark);
+        }
+        
+        .cyan-glow {
+            box-shadow: 0 0 20px rgba(255, 87, 34, 0.5);
+        }
+        
+        .dark .cyan-glow {
+            box-shadow: 0 0 20px rgba(255, 87, 34, 0.7);
+        }
+        
+        .cyan-text {
+            color: var(--primary);
+        }
+        
+        .btn-cyan {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cyan:hover {
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 87, 34, 0.4);
+            color: white;
+        }
+        
+        .feature-card {
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 87, 34, 0.1);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            margin: 6px auto;
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .mobile-menu.active {
+            max-height: 400px;
+        }
+        
+        .free-badge {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            animation: pulse 2s infinite;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--text-light);
+            border-radius: 5px;
+            padding: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .dark .theme-toggle {
+            background: rgba(0, 40, 56, 0.5);
+            border: 1px solid rgba(255, 87, 34, 0.3);
+            color: var(--text-dark);
+        }
+        
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .glass-dark {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 188, 212, 0.2);
+    box-shadow: 0 4px 6px var(--shadow-light);
+}
+.dark .glass-dark {
+    background: rgba(5, 25, 35, 0.7);
+    border: 1px solid rgba(0, 188, 212, 0.2);
+    box-shadow: 0 4px 6px var(--shadow-dark);
+}
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="glass-dark fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fa-brands fa-php text-2xl cyan-text mr-2"></i>
+                    <span class="text-xl font-bold cyan-text">TRDbots</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#how-it-works" class="nav-link">How It Works</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="theme-toggle p-2 rounded-full">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                </div>
+                
+                <!-- Auth Buttons -->
+                <div class="hidden md:flex space-x-4">
+                                        <a href="login-signup.html" class="px-4 py-2 rounded-lg glass">Login</a>
+                    <a href="login-signup.html" class="px-4 py-2 rounded-lg btn-cyan">Get Started Free</a>
+                                    </div>
+                
+                <!-- Mobile Hamburger Menu -->
+                <div class="md:hidden flex items-center space-x-4">
+                    <!-- Theme Toggle for Mobile -->
+                    <button id="theme-toggle-mobile" class="theme-toggle p-2 rounded-full">
+                        <i class="fas fa-moon" id="theme-icon-mobile"></i>
+                    </button>
+                    
+                    <button id="hamburger" class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden mt-4">
+                <div class="flex flex-col space-y-4 pb-4">
+                    <a href="#home" class="nav-link py-2">Home</a>
+                    <a href="#features" class="nav-link py-2">Features</a>
+                    <a href="#how-it-works" class="nav-link py-2">How It Works</a>
+                    <a href="#faq" class="nav-link py-2">FAQ</a>
+                    <a href="#contact" class="nav-link py-2">Contact</a>
+                    <div class="flex space-x-4 pt-2">
+                                                <a href="login-signup.html" class="px-4 py-2 rounded-lg glass flex-1 text-center">Login</a>
+                        <a href="login-signup.html" class="px-4 py-2 rounded-lg btn-cyan flex-1 text-center">Get Started Free</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <span class="free-badge text-white px-4 py-2 rounded-full font-bold mb-4 inline-block">100% FREE</span>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Premium <span class="cyan-text">Telegram Bot</span> Hosting</h1>
+                    <p class="text-lg mb-6">Experience blazing fast speed with our optimized infrastructure. Host your Telegram bots with ease and reliability - completely free!</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                                                <a href="login-signup.html" class="px-6 py-3 rounded-lg btn-cyan font-semibold text-center">Get Started Free</a>
+                                                <a href="#features" class="px-6 py-3 rounded-lg glass font-semibold text-center">Learn More</a>
+                    </div>
+                    <p class="mt-4 text-sm opacity-80"><i class="fas fa-star mr-2 cyan-text"></i>No credit card required • No hidden fees • Free forever</p>
+                </div>
+                <div class="md:w-1/2 flex justify-center mt-10 md:mt-0">
+                    <div class="glass rounded-2xl p-6 cyan-glow max-w-md w-full">
+                        <i class="fas fa-server text-6xl cyan-text mb-4 block text-center"></i>
+                        <h3 class="text-xl font-bold text-center mb-4">Powerful Infrastructure</h3>
+                        <p class="text-center">Our servers are optimized specifically for Telegram bot hosting, ensuring maximum performance and uptime.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Powerful <span class="cyan-text">Features</span> - All Free</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass rounded-xl p-6 feature-card">
+                    <i class="fas fa-bolt text-3xl cyan-text mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Blazing Fast Speed</h3>
+                    <p>Optimized servers ensure your bots respond instantly to user requests.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="glass rounded-xl p-6 feature-card">
+                    <i class="fas fa-database text-3xl cyan-text mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Multiple Databases</h3>
+                    <p>Support for various database systems to store your bot's data efficiently.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="glass rounded-xl p-6 feature-card">
+                    <i class="fas fa-hdd text-3xl cyan-text mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">10GB Storage per Bot</h3>
+                    <p>Ample storage space for your bot's files, media, and data.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="glass rounded-xl p-6 feature-card">
+                    <i class="fas fa-network-wired text-3xl cyan-text mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">10GB Monthly Bandwidth</h3>
+                    <p>Generous bandwidth allocation to handle high traffic volumes.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="glass rounded-xl p-6 feature-card">
+                    <i class="fas fa-server text-3xl cyan-text mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">5 Separate Servers</h3>
+                    <p>Distribute your bots across multiple servers for optimal performance.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="glass rounded-xl p-6 feature-card">
+                    <i class="fab fa-php text-3xl cyan-text mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">PHP 7.5+ Support</h3>
+                    <p>Latest PHP versions supported for modern bot development.</p>
+                </div>
+                
+                <!-- Feature 7 -->
+                <div class="glass rounded-xl p-6 feature-card">
+                    <i class="fas fa-ad text-3xl cyan-text mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Advertisement & Monetization</h3>
+                    <p>Built-in tools to monetize your bots through advertisements.</p>
+                </div>
+                
+                <!-- Feature 8 -->
+                <div class="glass rounded-xl p-6 feature-card">
+                    <i class="fas fa-tachometer-alt text-3xl cyan-text mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Easy-to-Use Dashboard</h3>
+                    <p>Intuitive control panel to manage all your bots in one place.</p>
+                </div>
+                
+                <!-- Feature 9 -->
+                <div class="glass rounded-xl p-6 feature-card">
+                    <i class="fas fa-infinity text-3xl cyan-text mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Unlimited Bot Hosting</h3>
+                    <p>Host as many bots as you need without any restrictions.</p>
+                </div>
+                
+                <!-- Feature 10 -->
+                <div class="glass rounded-xl p-6 feature-card">
+                    <i class="fas fa-bug text-3xl cyan-text mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Error Management</h3>
+                    <p>Advanced error tracking and management tools for smooth operation.</p>
+                </div>
+                
+                
+                <!-- Feature 11 -->
+                <div class="glass rounded-xl p-6 feature-card">
+                    <i class="fas fa-robot text-3xl cyan-text mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">AI Support</h3>
+                    <p>AI-powered assistance for bot optimization and troubleshooting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">How It <span class="cyan-text">Works</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Step 1 -->
+                <div class="glass rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 rounded-full bg-cyan-900 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold cyan-text">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Sign Up Free</h3>
+                    <p>Create your account in seconds. No credit card required.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="glass rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 rounded-full bg-cyan-900 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold cyan-text">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Deploy Your Bot</h3>
+                    <p>Upload your bot code or use our templates to get started quickly.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="glass rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 rounded-full bg-cyan-900 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold cyan-text">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Go Live</h3>
+                    <p>Your bot is now live and ready to serve users worldwide.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                                <a href="login-signup.html" class="px-8 py-3 rounded-lg btn-cyan font-semibold text-lg inline-block">Start Hosting Free Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-4">
+        <div class="container mx-auto max-w-3xl">
+            <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked <span class="cyan-text">Questions</span></h2>
+            
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="glass rounded-xl p-6">
+                    <h3 class="text-xl font-bold mb-2 cyan-text">Is it really free?</h3>
+                    <p>Yes! TRDbots is completely free to use with no hidden costs. We believe in supporting the Telegram bot developer community.</p>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="glass rounded-xl p-6">
+                    <h3 class="text-xl font-bold mb-2 cyan-text">Are there any limitations?</h3>
+                    <p>Our free plan includes generous resources: 10GB storage per bot, 10GB monthly bandwidth, and support for unlimited bots.</p>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="glass rounded-xl p-6">
+                    <h3 class="text-xl font-bold mb-2 cyan-text">How do you sustain a free service?</h3>
+                    <p>We offer optional premium add-ons and monetization features for those who need extra resources or want to remove non-intrusive ads.</p>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="glass rounded-xl p-6">
+                    <h3 class="text-xl font-bold mb-2 cyan-text">What programming languages are supported?</h3>
+                    <p>We support PHP 7.5+ through our flexible hosting environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto text-center">
+            <div class="glass rounded-2xl p-12 max-w-4xl mx-auto cyan-glow">
+                <h2 class="text-3xl font-bold mb-4">Ready to Host Your Telegram Bot?</h2>
+                <p class="text-xl mb-8">Join thousands of developers who host their bots on TRDbots - completely free!</p>
+                                <a href="login-signup.html" class="px-8 py-3 rounded-lg btn-cyan font-semibold text-lg inline-block">Get Started Free Now</a>
+                <p class="mt-4 text-sm opacity-80">No credit card required • Setup in minutes • Free forever</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="glass-dark py-12 px-4">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fa-brands fa-php text-2xl cyan-text mr-2"></i>
+                        <span class="text-xl font-bold cyan-text">TRDbots</span>
+                    </div>
+                    <p class="opacity-80">The best free Telegram bot hosting platform with powerful features and reliable performance.</p>
+                </div>
+                
+               <div class="backdrop-blur-md bg-white/10 dark:bg-gray-800/20 rounded-2xl p-6 shadow-lg transition-all duration-300 border border-white/20">
+  <h3 class="text-lg font-bold mb-4 cyan-text">Quick Links</h3>
+  <ul class="space-y-3">
+    <li class="flex items-center">
+      <a href="#home" class="flex items-center text-gray-300 hover:text-cyan-400 transition">
+        <i class="fas fa-home mr-3 cyan-text"></i>
+        <span>Home</span>
+      </a>
+    </li>
+    <li class="flex items-center">
+      <a href="#features" class="flex items-center text-gray-300 hover:text-cyan-400 transition">
+        <i class="fas fa-star mr-3 cyan-text"></i>
+        <span>Features</span>
+      </a>
+    </li>
+    <li class="flex items-center">
+      <a href="#how-it-works" class="flex items-center text-gray-300 hover:text-cyan-400 transition">
+        <i class="fas fa-cogs mr-3 cyan-text"></i>
+        <span>How It Works</span>
+      </a>
+    </li>
+    <li class="flex items-center">
+      <a href="#faq" class="flex items-center text-gray-300 hover:text-cyan-400 transition">
+        <i class="fas fa-question-circle mr-3 cyan-text"></i>
+        <span>FAQ</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+               <div class="backdrop-blur-md bg-white/10 dark:bg-gray-800/20 rounded-2xl p-6 shadow-lg transition-all duration-300 border border-white/20">
+  <h3 class="text-lg font-bold mb-4 cyan-text">Resources</h3>
+  <ul class="space-y-3">
+    <li class="flex items-center">
+      <a href="#" class="flex items-center text-gray-300 hover:text-cyan-400 transition">
+        <i class="fas fa-book mr-3 cyan-text"></i>
+        <span>Documentation</span>
+      </a>
+    </li>
+    <li class="flex items-center">
+      <a href="https://t.me/trdbots" target="_blank" class="flex items-center text-gray-300 hover:text-cyan-400 transition">
+        <i class="fab fa-telegram-plane mr-3 cyan-text"></i>
+        <span>Community</span>
+      </a>
+    </li>
+    <li class="flex items-center">
+      <a href="https://t.me/droporganization" target="_blank" class="flex items-center text-gray-300 hover:text-cyan-400 transition">
+        <i class="fab fa-telegram mr-3 cyan-text"></i>
+        <span>Support</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+                
+               <div class="backdrop-blur-md bg-white/10 dark:bg-gray-800/20 rounded-2xl p-6 shadow-lg transition-all duration-300 border border-white/20">
+  <h3 class="text-lg font-bold mb-4 cyan-text">Contact Us</h3>
+  <ul class="space-y-3">
+    <li class="flex items-center">
+      <a href="mailto:support@trdbots.site" class="flex items-center text-gray-300 hover:text-cyan-400 transition">
+        <i class="fas fa-envelope mr-3 cyan-text"></i>
+        <span>support@trdbots.site</span>
+      </a>
+    </li>
+    <li class="flex items-center">
+      <a href="https://t.me/trdbots" target="_blank" class="flex items-center text-gray-300 hover:text-cyan-400 transition">
+        <i class="fab fa-telegram-plane mr-3 cyan-text"></i>
+        <span>TRDBOTS</span>
+      </a>
+    </li>
+    <!--<li class="flex items-center">
+      <a href="https://twitter.com/botssite" target="_blank" class="flex items-center text-gray-300 hover:text-cyan-400 transition">
+        <i class="fab fa-twitter mr-3 cyan-text"></i>
+        <span>@botssite</span>
+      </a>
+    </li>-->
+  </ul>
+</div>
+
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+            </div>
+            
+            <div class="border-t border-cyan-800 mt-8 pt-8 text-center opacity-70">
+                <p>� 2025 TRDbots. All rights reserved. | Free Telegram Bot Hosting</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        
+        // Check for saved theme preference or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply the saved theme
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeIconMobile.classList.remove('fa-moon');
+            themeIconMobile.classList.add('fa-sun');
+        }
+        
+        // Theme toggle function
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            
+            if (document.body.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeIconMobile.classList.remove('fa-moon');
+                themeIconMobile.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeIconMobile.classList.remove('fa-sun');
+                themeIconMobile.classList.add('fa-moon');
+            }
+        }
+        
+        // Add event listeners to both theme toggles
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+    </script>
+
+</body></html>

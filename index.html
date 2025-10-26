@@ -1,10 +1,9 @@
-
-</body><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VIPIN - Happy Diwali</title>
+  <title>VIPIN - MEDICO</title>
   <style>
     * {
       margin: 0;
@@ -43,40 +42,28 @@
     }
 
     .bg-slide:nth-child(1) {
-      background-image: url('https://i.ibb.co/XZKqSL7F/Happy-Diwali-by-Ranganath-iphone-11-pro.jpg');
+      background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9jdG9yJTIwc3RldGhvc2NvcGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60');
       animation-delay: 0s;
     }
     .bg-slide:nth-child(2) {
-      background-image: url('https://i.ibb.co/4wPWVXB6/images-26.jpg');
-      animation-delay: 4s;
+      background-image: url('https://images.unsplash.com/photo-1584467735871-8db9ac8e5e3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWVkaWNhbCUyMHByb2Zlc3Npb25hbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60');
+      animation-delay: 6s;
     }
     .bg-slide:nth-child(3) {
-      background-image: url('https://i.ibb.co/p6bzLCLM/c805c0ff51415c505ddc2630fbea1b31.jpg');
-      animation-delay: 8s;
-    }
-    .bg-slide:nth-child(4) {
-      background-image: url('https://i.ibb.co/YmnkCmz/49ef3945-17cf-4bab-9b6f-d2acadac0e5c.jpg');
+      background-image: url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRvY3RvciUyMHN0ZXRob3Njb3BlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60');
       animation-delay: 12s;
     }
+    .bg-slide:nth-child(4) {
+      background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWVkaWNhbCUyMHByb2Zlc3Npb25hbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60');
+      animation-delay: 18s;
+    }
     .bg-slide:nth-child(5) {
-      background-image: url('https://i.ibb.co/hFkxpPn1/Diwali.jpg');
-      animation-delay: 16s;
-    }
-    .bg-slide:nth-child(6) {
-      background-image: url('https://i.ibb.co/hRXXqW4w/Happy-Diwali-Wishes-Quotes-SMS-2020-iphone-12-pro-max.jpg');
-      animation-delay: 20s;
-    }
-    .bg-slide:nth-child(7) {
-      background-image: url('https://i.ibb.co/nqTy8jnV/423644bec1d12fcdd29c62380e426c3d.jpg');
+      background-image: url('https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGRvY3RvciUyMHN0ZXRob3Njb3BlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60');
       animation-delay: 24s;
     }
-    .bg-slide:nth-child(8) {
-      background-image: url('https://i.ibb.co/8DpNFttk/images-25.jpg');
-      animation-delay: 28s;
-    }
-    .bg-slide:nth-child(9) {
-      background-image: url('https://i.ibb.co/zTfw6p4j/968f8d83-251e-4a85-8640-02a71fa0824e.jpg');
-      animation-delay: 32s;
+    .bg-slide:nth-child(6) {
+      background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG1lZGljYWwlMjBwcm9mZXNzaW9uYWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60');
+      animation-delay: 30s;
     }
 
     @keyframes slideShow {
@@ -87,6 +74,26 @@
       100% { opacity: 0; }
     }
 
+    /* Winner-like gradient background */
+    .winner-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #1a237e, #283593, #303f9f, #3949ab, #3f51b5);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      z-index: -3;
+      opacity: 0.8;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     /* Overlay for better text visibility */
     .overlay {
       position: fixed;
@@ -94,46 +101,83 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.4);
       z-index: -1;
     }
 
-    /* Jhalar Lighting - Top Decoration */
-    .jhalar-container {
+    /* Winner Flower Rain Container - PERFECTED */
+    .flower-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    .flower {
+      position: absolute;
+      font-size: 24px;
+      animation: flowerFall linear forwards;
+      opacity: 0.7;
+      filter: drop-shadow(0 0 8px rgba(79, 195, 247, 0.8));
+      z-index: 15;
+    }
+
+    @keyframes flowerFall {
+      0% {
+        transform: translateY(-100px) translateX(0px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      90% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(100vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Medical themed top decoration */
+    .top-decoration {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       display: flex;
       justify-content: space-around;
-      z-index: 5;
+      z-index: 16;
       padding: 10px;
-      background: linear-gradient(180deg, rgba(139,0,0,0.1) 0%, transparent 100%);
+      background: linear-gradient(180deg, rgba(0, 100, 150, 0.3) 0%, transparent 100%);
     }
 
-    .light {
+    .symbol {
       font-size: 1.8em;
-      animation: lightTwinkle 1.5s infinite alternate;
-      filter: drop-shadow(0 0 8px #ffd700);
+      animation: symbolTwinkle 1.5s infinite alternate;
+      filter: drop-shadow(0 0 8px #4fc3f7);
     }
 
-    .light:nth-child(odd) {
+    .symbol:nth-child(odd) {
       animation-delay: 0.5s;
-      color: #ff4500;
+      color: #4fc3f7;
     }
 
-    .light:nth-child(even) {
+    .symbol:nth-child(even) {
       animation-delay: 1s;
-      color: #ffd700;
+      color: #29b6f6;
     }
 
-    @keyframes lightTwinkle {
+    @keyframes symbolTwinkle {
       0%, 100% { opacity: 0.3; transform: scale(0.8); }
       50% { opacity: 1; transform: scale(1.2); }
     }
 
-    /* Lantern Styles */
-    .lantern-container {
+    /* Floating elements */
+    .float-container {
       position: fixed;
       top: 0;
       left: 0;
@@ -143,14 +187,14 @@
       z-index: 4;
     }
 
-    .lantern {
+    .float-item {
       position: absolute;
       font-size: 30px;
-      animation: lantern-float 20s linear forwards;
+      animation: float-up 20s linear forwards;
       opacity: 0.7;
     }
 
-    @keyframes lantern-float {
+    @keyframes float-up {
       0% {
         transform: translateY(100vh) rotate(0deg);
         opacity: 0;
@@ -179,20 +223,20 @@
       z-index: 10;
     }
 
-    /* Card background */
+    /* Card background - INCREASED OPACITY FOR BETTER TEXT READABILITY */
     .card {
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.75);
       border-radius: 20px;
       padding: 40px 30px;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 215, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(79, 195, 247, 0.6);
       text-align: center;
       max-width: 800px;
       width: 100%;
       animation: fadeIn 1.5s ease forwards;
       position: relative;
       z-index: 11;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+      box-shadow: 0 0 30px rgba(79, 195, 247, 0.4);
     }
 
     @keyframes fadeIn {
@@ -205,12 +249,12 @@
       height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #ffd700;
+      border: 3px solid #4fc3f7;
       margin-bottom: 20px;
       animation: float 3s ease-in-out infinite;
       position: relative;
       z-index: 12;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      box-shadow: 0 0 20px rgba(79, 195, 247, 0.5);
     }
 
     @keyframes float {
@@ -221,14 +265,14 @@
     h1 {
       font-size: 2.5em;
       margin-bottom: 10px;
-      background: linear-gradient(45deg, #ffd700, #ff8c00, #ff4500, #ff0000);
+      background: linear-gradient(45deg, #4fc3f7, #29b6f6, #0288d1, #0277bd);
       background-size: 400% 400%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: gradient 3s ease infinite;
       position: relative;
       z-index: 12;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
     }
 
     @keyframes gradient {
@@ -237,8 +281,8 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Diwali themed stickers */
-    .sticker-container {
+    /* Medical themed stickers */
+    .symbol-container {
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -248,16 +292,16 @@
       z-index: 12;
     }
 
-    .sticker {
-      font-size: 3em;
+    .symbol-item {
+      font-size: 1.5em;
       animation: bounce 2s infinite, rotate 4s linear infinite;
-      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+      filter: drop-shadow(0 0 10px rgba(79, 195, 247, 0.5));
     }
 
-    .sticker-1 { animation-delay: 0s; }
-    .sticker-2 { animation-delay: 0.5s; }
-    .sticker-3 { animation-delay: 1s; }
-    .sticker-4 { animation-delay: 1.5s; }
+    .symbol-1 { animation-delay: 0s; }
+    .symbol-2 { animation-delay: 0.5s; }
+    .symbol-3 { animation-delay: 1s; }
+    .symbol-4 { animation-delay: 1.5s; }
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0) scale(1); }
@@ -269,23 +313,23 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Boxes */
+    /* Boxes - INCREASED OPACITY FOR BETTER TEXT READABILITY */
     .box {
-      border: 2px solid #ffd700;
+      border: 2px solid #4fc3f7;
       border-radius: 15px;
       padding: 25px;
       margin: 20px 0;
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 215, 0, 0.6);
+      border: 1px solid rgba(79, 195, 247, 0.6);
       animation: glow 2s ease-in-out infinite alternate;
       position: relative;
       z-index: 12;
     }
 
     @keyframes glow {
-      from { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
-      to { box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6); }
+      from { box-shadow: 0 0 20px rgba(79, 195, 247, 0.5); }
+      to { box-shadow: 0 0 30px rgba(79, 195, 247, 0.8), 0 0 40px rgba(79, 195, 247, 0.6); }
     }
 
     .box ul {
@@ -297,7 +341,7 @@
     .box ul li {
       padding: 12px 0;
       font-size: 1.2em;
-      border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+      border-bottom: 1px solid rgba(79, 195, 247, 0.3);
       animation: slideIn 0.5s ease forwards;
       opacity: 0;
       transform: translateX(-20px);
@@ -314,13 +358,13 @@
     }
 
     .box ul li::before {
-      content: "🪔 ";
-      color: #ffd700;
+      content: "🩺 ";
+      color: #4fc3f7;
       font-weight: bold;
-      animation: twinkle 1.5s infinite;
+      animation: pulse 1.5s infinite;
     }
 
-    @keyframes twinkle {
+    @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
@@ -341,10 +385,10 @@
     .info-box h2 {
       font-size: 1.5em;
       margin-bottom: 15px;
-      border-bottom: 2px solid #ff8c00;
+      border-bottom: 2px solid #29b6f6;
       padding-bottom: 8px;
       animation: slideInLeft 1s ease;
-      color: #ffa500;
+      color: #4fc3f7;
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     }
 
@@ -363,18 +407,18 @@
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     }
 
-    /* Diwali themed animation */
+    /* Medical themed animation */
     .info-box ul li::before {
-      content: "🎆";
+      content: "💊";
       position: absolute;
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      animation: fireworkSpin 2s infinite;
+      animation: medicineSpin 2s infinite;
       display: inline-block;
     }
 
-    @keyframes fireworkSpin {
+    @keyframes medicineSpin {
       0%, 100% { 
         transform: translateY(-50%) rotate(0deg); 
       }
@@ -389,27 +433,29 @@
       }
     }
 
-    /* Diwali themed button */
-    .telegram-btn {
+    /* Medical themed buttons - BOTH SAME SIZE */
+    .contact-btn {
       display: inline-block;
-      margin-top: 1px;
-      padding: 12px 15px;
-      background: linear-gradient(135deg, #ff8c00, #ff4500);
+      margin: 15px;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #0288d1, #0277bd);
       border: none;
       border-radius: 50px;
       color: white;
       font-size: 1.2em;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 0 15px #ff8c00;
+      box-shadow: 0 0 15px #0288d1;
       animation: pulse 2s infinite;
       position: relative;
       overflow: hidden;
       z-index: 12;
       font-weight: bold;
+      min-width: 220px;
+      text-align: center;
     }
 
-    .telegram-btn::before {
+    .contact-btn::before {
       content: '';
       position: absolute;
       top: 0;
@@ -420,163 +466,41 @@
       transition: 0.5s;
     }
 
-    .telegram-btn:hover::before {
+    .contact-btn:hover::before {
       left: 100%;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 15px #ff8c00; }
-      50% { transform: scale(1.05); box-shadow: 0 0 25px #ff8c00; }
-    }
-
-    .telegram-btn:hover {
-      background: linear-gradient(135deg, #ff4500, #ff8c00);
+    .contact-btn:hover {
+      background: linear-gradient(135deg, #0277bd, #0288d1);
       transform: scale(1.1);
-      box-shadow: 0 0 30px #ff8c00;
-      color: #8b0000;
+      box-shadow: 0 0 30px #0288d1;
+      color: #e1f5fe;
     }
 
-    /* Diwali Countdown Timer */
-    .countdown-container {
-      margin: 25px 0;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 15px;
-      border: 2px solid #ffd700;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-      position: relative;
-      z-index: 12;
-      animation: glow 2s ease-in-out infinite alternate;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .countdown-title {
-      font-size: 1.5em;
-      margin-bottom: 15px;
-      color: #ffd700;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
-    }
-
-    .countdown-timer {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .countdown-row {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .countdown-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 80px;
-    }
-
-    .countdown-value {
-      font-size: 1.8em;
-      font-weight: bold;
-      color: #ffd700;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
-      background: rgba(0, 0, 0, 0.6);
-      padding: 8px 12px;
-      border-radius: 10px;
-      border: 2px solid #ff8c00;
-      min-width: 70px;
-      animation: countdownPulse 1s infinite alternate;
-    }
-
-    .countdown-label {
-      font-size: 0.8em;
-      margin-top: 5px;
-      color: #ffa500;
-      text-transform: uppercase;
-    }
-
-    @keyframes countdownPulse {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.05); }
-    }
-
-    .diwali-date {
-      margin-top: 15px;
-      font-size: 1em;
-      color: #ffd700;
-      text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-    }
-
-    /* Diwali Wishes - Hidden by default */
-    .diwali-wishes {
-      display: none;
-      margin: 25px 0;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 15px;
-      border: 2px solid #ffd700;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
-      position: relative;
-      z-index: 12;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-      animation: wishesGlow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes wishesGlow {
-      from { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
-      to { box-shadow: 0 0 40px rgba(255, 215, 0, 0.9), 0 0 60px rgba(255, 215, 0, 0.7); }
-    }
-
-    .wishes-title {
-      font-size: 2.2em;
-      margin-bottom: 20px;
-      color: #ffd700;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-      animation: pulse 2s infinite;
-    }
-
-    .wishes-message {
-      font-size: 1.3em;
-      line-height: 1.6;
-      color: #ffffff;
-      margin-bottom: 20px;
-      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
-    }
-
-    .wishes-stickers {
-      font-size: 3em;
-      margin-top: 15px;
-      animation: bounce 2s infinite;
-    }
-
-    /* Shubh Diwali Coming Soon Button - Fixed Size */
-    .diwali-btn {
+    /* Medical themed button - BOTH SAME SIZE */
+    .professional-btn {
       display: inline-block;
       margin: 15px;
-      padding: 12px 7px;
-      background: linear-gradient(135deg, #ffd700, #ff8c00, #ff4500);
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #4fc3f7, #29b6f6, #0288d1);
       border: none;
       border-radius: 50px;
-      color: #8b0000;
+      color: #e1f5fe;
       font-size: 1.2em;
       font-weight: bold;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 0 15px #ffd700;
+      box-shadow: 0 0 15px #4fc3f7;
       animation: pulse 2s infinite;
       position: relative;
       overflow: hidden;
       z-index: 12;
       cursor: pointer;
+      min-width: 220px;
+      text-align: center;
     }
 
-    .diwali-btn::before {
+    .professional-btn::before {
       content: '';
       position: absolute;
       top: 0;
@@ -587,20 +511,20 @@
       transition: 0.5s;
     }
 
-    .diwali-btn:hover::before {
+    .professional-btn:hover::before {
       left: 100%;
     }
 
-    .diwali-btn:hover {
-      background: linear-gradient(135deg, #ff4500, #ff8c00, #ffd700);
+    .professional-btn:hover {
+      background: linear-gradient(135deg, #0288d1, #29b6f6, #4fc3f7);
       transform: scale(1.1);
-      box-shadow: 0 0 30px #ffd700;
+      box-shadow: 0 0 30px #4fc3f7;
     }
 
     footer {
       margin-top: 40px;
       font-size: 0.9em;
-      color: #ffd600;
+      color: #4fc3f7;
       text-align: center;
       animation: fadeIn 2s ease;
       position: relative;
@@ -608,13 +532,13 @@
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     }
 
-    /* View Counter Styles - FIXED 976 VIEWS */
+    /* View Counter Styles */
     .view-counter {
       position: fixed;
       bottom: 15px;
       left: 15px;
       background: rgba(0, 0, 0, 0.7);
-      color: #ffd700;
+      color: #4fc3f7;
       padding: 8px 15px;
       border-radius: 20px;
       font-size: 0.9em;
@@ -622,9 +546,9 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      box-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
       backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 215, 0, 0.3);
+      border: 1px solid rgba(79, 195, 247, 0.3);
     }
 
     .view-counter .eye-icon {
@@ -633,46 +557,31 @@
 
     .view-count {
       font-weight: bold;
-      color: #ffa500;
-      text-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+      color: #29b6f6;
+      text-shadow: 0 0 5px rgba(41, 182, 246, 0.5);
     }
 
     @media (max-width: 600px) {
-      .countdown-row {
-        flex-wrap: wrap;
-      }
-      
-      .countdown-item {
-        min-width: 70px;
-      }
-      
-      .countdown-value {
-        font-size: 1.5em;
-        min-width: 60px;
-      }
-      
-      .wishes-title {
-        font-size: 1.8em;
-      }
-      
-      .wishes-message {
-        font-size: 1.1em;
-      }
-      
       .view-counter {
         font-size: 0.8em;
         padding: 6px 12px;
+      }
+      
+      .contact-btn, .professional-btn {
+        min-width: 200px;
+        padding: 10px 15px;
+        font-size: 1.1em;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Winner Background Gradient -->
+  <div class="winner-bg"></div>
+
   <!-- Background Image Slideshow -->
   <div class="bg-slideshow">
-    <div class="bg-slide"></div>
-    <div class="bg-slide"></div>
-    <div class="bg-slide"></div>
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
@@ -684,22 +593,25 @@
   <!-- Overlay for better text visibility -->
   <div class="overlay"></div>
 
-  <!-- Jhalar Lighting - Top Decoration -->
-  <div class="jhalar-container">
-    <div class="light">💡</div>
-    <div class="light">✨</div>
-    <div class="light">💡</div>
-    <div class="light">✨</div>
-    <div class="light">💡</div>
-    <div class="light">✨</div>
-    <div class="light">💡</div>
-    <div class="light">✨</div>
+  <!-- Winner Flower Rain Container - PERFECTED -->
+  <div class="flower-container" id="flower-container"></div>
+
+  <!-- Medical themed top decoration -->
+  <div class="top-decoration">
+    <div class="symbol">⚕️</div>
+    <div class="symbol">💊</div>
+    <div class="symbol">🩺</div>
+    <div class="symbol">🏥</div>
+    <div class="symbol">⚕️</div>
+    <div class="symbol">💊</div>
+    <div class="symbol">🩺</div>
+    <div class="symbol">🏥</div>
   </div>
 
-  <!-- Lantern Container -->
-  <div class="lantern-container" id="lantern-container"></div>
+  <!-- Floating elements container -->
+  <div class="float-container" id="float-container"></div>
 
-  <!-- View Counter - FIXED 976 VIEWS -->
+  <!-- View Counter -->
   <div class="view-counter">
     <span class="eye-icon">👁️</span>
     <span>Views: <span class="view-count">976</span></span>
@@ -710,17 +622,17 @@
     <div class="card">
       <!-- Your Hosted DP -->
       <img src="https://envs.sh/KLH.jpg" alt="VIPIN" class="profile-pic" />
-      <h1>🪔 VIPIN 🪔</h1>
+      <h1>🩺 VIPIN 🩺</h1>
       
-      <!-- Diwali themed Stickers -->
-      <div class="sticker-container">
-        <div class="sticker sticker-1">🪔</div>
-        <div class="sticker sticker-2">🎆</div>
-        <div class="sticker sticker-3">✨</div>
-        <div class="sticker sticker-4">🎇</div>
+      <!-- Medical themed symbols -->
+      <div class="symbol-container">
+        <div class="symbol-item symbol-1">⚕️</div>
+        <div class="symbol-item symbol-2">🩺</div>
+        <div class="symbol-item symbol-3">💊</div>
+        <div class="symbol-item symbol-4">🏥</div>
       </div>
       
-      <!-- Box Section -->
+      <!-- Box Section - ORIGINAL TEXT -->
       <div class="box">
         <ul>
           <li>Hɪ! I'ᴍ Vɪᴘɪɴ — ᴀ ᴘᴀʀᴛ ᴏғ Gᴏᴅ.</li>
@@ -746,53 +658,12 @@
         </ul>
       </div>
 
-      <!-- Diwali Countdown Timer -->
-      <div class="countdown-container" id="countdown-container">
-        <div class="countdown-title">🪔 Diwali Countdown 🪔</div>
-        <div class="countdown-timer">
-          <div class="countdown-row">
-            <div class="countdown-item">
-              <div class="countdown-value" id="days">00</div>
-              <div class="countdown-label">Days</div>
-            </div>
-            <div class="countdown-item">
-              <div class="countdown-value" id="hours">00</div>
-              <div class="countdown-label">Hours</div>
-            </div>
-          </div>
-          <div class="countdown-row">
-            <div class="countdown-item">
-              <div class="countdown-value" id="minutes">00</div>
-              <div class="countdown-label">Minutes</div>
-            </div>
-            <div class="countdown-item">
-              <div class="countdown-value" id="seconds">00</div>
-              <div class="countdown-label">Seconds</div>
-            </div>
-          </div>
-        </div>
-        <div class="diwali-date">Diwali 2025: October 20, 2025</div>
-      </div>
-
-      <!-- Diwali Wishes - Will be shown when countdown ends -->
-      <div class="diwali-wishes" id="diwali-wishes">
-        <div class="wishes-title">🪔 Happy Diwali! 🪔</div>
-        <div class="wishes-message">
-          May the divine light of Diwali spread into your life<br>
-          Peace, Prosperity, Happiness and Good Health.<br>
-          Wishing you and your family a very Happy Diwali!
-        </div>
-        <div class="wishes-stickers">
-          🪔🎆✨🎇💥
-        </div>
-      </div>
-
-      <!-- Shubh Diwali Coming Soon Button -->
-      <button class="diwali-btn">
-        🎇 Celebrate Diwali! 🎇
+      <!-- Medical themed buttons - NOW BOTH SAME SIZE -->
+      <button class="professional-btn">
+        🩺 MEDICO-ASPIRANTS 🩺
       </button>
 
-      <a href="https://t.me/KohinoorOfficial1" class="telegram-btn" target="_blank">
+      <a href="https://t.me/KohinoorOfficial1" class="contact-btn" target="_blank">
         💬 Join My Telegram 
       </a>
     </div>
@@ -800,67 +671,69 @@
     <footer>
       © 2025 TEAM KOHINOOR. All rights reserved by Team Kohinoor.<br>
       MADE BY VIPIN | TEAM KOHINOOR<br>
-      🪔 Happy Diwali! 🪔
+      🩺 MEDICO | TEAM KOHINOOR 🩺
     </footer>
   </div>
 
   <script>
-    // Function to create sky lanterns
-    function createLanterns() {
-      const lanternContainer = document.getElementById('lantern-container');
+    // Function to create floating medical symbols
+    function createFloatingSymbols() {
+      const floatContainer = document.getElementById('float-container');
+      const symbols = ['⚕️', '🩺', '💊', '🏥', '❤️', '🫀'];
+      
       setInterval(() => {
-        const lantern = document.createElement('div');
-        lantern.className = 'lantern';
-        lantern.innerHTML = '🪔';
-        lantern.style.left = Math.random() * 100 + 'vw';
-        lantern.style.animationDuration = Math.random() * 10 + 15 + 's';
-        lantern.style.animationDelay = Math.random() * 5 + 's';
-        lanternContainer.appendChild(lantern);
+        const floatItem = document.createElement('div');
+        floatItem.className = 'float-item';
+        floatItem.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+        floatItem.style.left = Math.random() * 100 + 'vw';
+        floatItem.style.animationDuration = Math.random() * 10 + 15 + 's';
+        floatItem.style.animationDelay = Math.random() * 5 + 's';
+        floatContainer.appendChild(floatItem);
 
         setTimeout(() => {
-          lantern.remove();
+          floatItem.remove();
         }, 25000); 
       }, 1500);
     }
 
-    // Diwali Countdown Timer
-    function updateCountdown() {
-      // Diwali 2025 date - October 20, 2025 at 00:00:00
-      const diwaliDate = new Date("October 20, 2025 00:00:00").getTime();
-      const now = new Date().getTime();
-      const timeLeft = diwaliDate - now;
+    // Function to create PERFECTED winner flower rain
+    function createFlowerRain() {
+      const flowerContainer = document.getElementById('flower-container');
+      // Blue and medical themed flowers/symbols
+      const flowers = ['🌸', '🌺', '🌷', '💐, '💮', '💠', '❄️', ''];
+      
+      setInterval(() => {
+        const flower = document.createElement('div');
+        flower.className = 'flower';
+        flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+        
+        // More scattered distribution
+        flower.style.left = Math.random() * 100 + 'vw';
+        
+        // Slower falling - 12 to 20 seconds
+        flower.style.animationDuration = Math.random() * 8 + 12 + 's';
+        
+        // Random delay for more natural effect
+        flower.style.animationDelay = Math.random() * 5 + 's';
+        
+        // Random size but not too big
+        flower.style.fontSize = (Math.random() * 15 + 18) + 'px';
+        
+        flowerContainer.appendChild(flower);
 
-      // Check if the countdown is over
-      if (timeLeft < 0) {
-        // Hide countdown and show wishes
-        document.getElementById('countdown-container').style.display = 'none';
-        document.getElementById('diwali-wishes').style.display = 'block';
-        clearInterval(countdownTimer);
-        return;
-      }
-
-      // Calculate days, hours, minutes, and seconds
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-      // Update the countdown elements
-      document.getElementById('days').innerText = days.toString().padStart(2, '0');
-      document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+        // Remove flower after animation completes
+        setTimeout(() => {
+          if (flower.parentNode) {
+            flower.remove();
+          }
+        }, 30000); 
+      }, 800); // Reduced density - create new flower every 800ms instead of 200ms
     }
 
-    // Initialize countdown
-    updateCountdown();
-    
-    // Update countdown every second
-    const countdownTimer = setInterval(updateCountdown, 1000);
-
     // Initialize animations
-    createLanterns();
+    createFloatingSymbols();
+    createFlowerRain();
   </script>
 
 </body>
-</html>
+      </html>
